@@ -16,7 +16,8 @@ public class main {
 			}
 		}
 
-		System.out.println(solution.getMaxCalories());
+//		System.out.println(solution.getMaxCalories());
+		System.out.println(solution.getTopThreeMaxCaloriesSum());
 	}
 
 }

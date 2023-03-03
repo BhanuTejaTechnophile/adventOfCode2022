@@ -1,6 +1,7 @@
 package com.problemsolving.day1;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Solution {
@@ -21,5 +22,10 @@ public class Solution {
 
 	public int getMaxCalories() {
 		return this.elves.stream().map(e -> e.getTotalColories()).reduce(0, Integer::max);
+	}
+
+	public int getTopThreeMaxCaloriesSum() {
+		return this.elves.stream().sorted(Comparator.comparing(Elf::getTotalColories).reversed()).limit(3)
+				.map(e -> e.getTotalColories()).reduce(0, Integer::sum);
 	}
 }
