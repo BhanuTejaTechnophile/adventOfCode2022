@@ -1,25 +1,25 @@
 package com.problemsolving.day1;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.StringJoiner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Solution {
-	public String Test() throws IOException {
-		InputStreamReader is = new InputStreamReader(System.in);
-		BufferedReader br = new BufferedReader(is);
+	private List<Elf> elves;
 
-		StringJoiner input = new StringJoiner(",");
-		String line = br.readLine();
-		while (!line.equals("exit")) {
-			if (!line.isEmpty()) {
-				input.add(line);
-			} else {
-				input.add(" ");
-			}
-			line = br.readLine();
-		}
-		return input.toString();
+	Solution() {
+		this.elves = new ArrayList<>();
+		this.addNewElf();
+	}
+
+	public void addNewElf() {
+		this.elves.add(Elf.getInstance());
+	}
+
+	public void add(int calories) {
+		this.elves.get(this.elves.size() - 1).add(calories);
+	}
+
+	public int getMaxCalories() {
+		return this.elves.stream().map(e -> e.getTotalColories()).reduce(0, Integer::max);
 	}
 }
